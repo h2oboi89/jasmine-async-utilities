@@ -8,7 +8,10 @@
     "lint": "gulp lint",
     "test": "gulp test",
     "coverage": "gulp coverage",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "docClone": "jsdocgen clone",
+    "docGenerate": "jsdocgen generate",
+    "docPublish": "jsdocgen publish"
   },
   "repository": {
     "type": "git",
