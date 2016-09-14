@@ -21,7 +21,7 @@ let shouldReject = (thunk, reason) => {
  * @returns {Promise} Resolves after checking expectations.
  */
 let shouldResolve = (thunk, expectedValue) => {
-  return thunk.then((value) => expect(value).toEqual(expectedValue))
+  return thunk.then((value) => expect(value).toEqual(expectedValue));
 };
 
 /**
