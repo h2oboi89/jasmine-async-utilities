@@ -1,15 +1,22 @@
 # [jasmine-async-utilities](https://github.com/h2oboi89/jasmine-async-utilities)
 
-## Setup
-- Run `npm install` to install all dependencies
-- Run `npm update` to update dependencies
+## Usage
 
-## Scripts
-- Run `npm test` to run all tests
-- Run `npm run lint` to perform a lint check
-- Run `npm run coverage` to calculate unit test code coverage
-   - see coverage/lcov-report/index.html for detailed report
-- Run `npm run watch` to automatically run tests and lint check when files change
-- Run `npm run docClone` to clone your documentation repository
-- Run `npm run docGenerate` to generate documentation locally
-- Run `npm run docPublish` to generate and publish documentation on GitHub Pages
+```js
+describe('test suite', () => {
+  const utilities = require('jasmine-async-utilities');
+  const asyncTest = utilities.asyncTest;
+  const shouldResolve = utilities.shouldResolve;
+  const shouldReject = utilities.shouldReject;
+
+  it('resolve test', asyncTest(() => {
+    return shouldResolve(() => return Promise.resolve(3.14), 3.14);
+  }));
+
+  it('reject test', asyncTest(() => {
+    return shouldReject(() => return Promise.reject('oh noes!'), 'oh noes!');
+  }));
+});
+```
+
+[Documentation](https://h2oboi89.github.io/jasmine-async-utilities/index.html)
