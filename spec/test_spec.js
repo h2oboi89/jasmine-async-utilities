@@ -47,7 +47,7 @@ describe('tests', () => {
       return shouldReject(() => Promise.reject(`oh noes ${getRandomInt(0, 10)}`), /^oh noes \d$/);
     }));
 
-    it('should fail when rejected with an unexpeted reason', asyncTest(() => {
+    it('should fail when rejected with an unexpected reason', asyncTest(() => {
       return shouldReject(() => Promise.reject('foo'), 'bar');
     }));
   });
