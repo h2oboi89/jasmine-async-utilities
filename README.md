@@ -35,4 +35,6 @@ describe('test suite', () => {
 });
 ```
 
+See the [tests](https://github.com/h2oboi89/jasmine-async-utilities/blob/master/spec/test_spec.js) for more examples.
+
 [Documentation](https://h2oboi89.github.io/jasmine-async-utilities/index.html)
