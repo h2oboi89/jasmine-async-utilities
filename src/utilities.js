@@ -4,24 +4,44 @@
  * Wrapper for tests that should reject.
  * @function
  * @param {function} thunk - Code to execute that should Promise.reject
- * @param {string|Error} reason - Expected value that thunk should reject with
+ * @param {string|Error|RegExp} reason - Expected value that thunk should reject with
  * @returns {Promise} Resolves after checking expectations.
  */
 let shouldReject = (thunk, reason) => {
-  return thunk
+  return thunk()
     .then(() => fail('should have rejected'))
-    .catch((error) => expect(error).toEqual(reason));
+    .catch((error) => {
+      if(reason instanceof RegExp) {
+        expect(error.match(reason)).not.toBe(null);
+      }
+      else {
+        if(typeof reason === 'string' && typeof error !== 'string') {
+          error = error.message;
+        }
+
+        expect(error).toEqual(reason);
+      }
+    });
 };
 
 /**
  * Wrapper for tests that should resolve.
  * @function
  * @param {function} thunk - Code to execute that should Promise.resolve
- * @param {object} expectedValue - Expected value that thunk should resolve with
+ * @param {object} [expectedValue] - Expected value that thunk should resolve with
+ * @param {function} [matcher] - Custom matcher function of the form (expected, actual) => Boolean.
  * @returns {Promise} Resolves after checking expectations.
  */
-let shouldResolve = (thunk, expectedValue) => {
-  return thunk.then((value) => expect(value).toEqual(expectedValue));
+let shouldResolve = (thunk, expectedValue, matcher) => {
+  return thunk()
+    .then((value) => {
+      if(matcher) {
+        expect(matcher(expectedValue, value)).toBe(true);
+      }
+      else {
+        expect(value).toEqual(expectedValue);
+      }
+    });
 };
 
 /**
