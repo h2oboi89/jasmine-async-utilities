@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/jasmine-async-utilities.svg)](https://badge.fury.io/js/jasmine-async-utilities)
+
 # [jasmine-async-utilities](https://github.com/h2oboi89/jasmine-async-utilities)
 
 ## Usage
