@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/npm.svg?maxAge=2592000)](https://www.npmjs.com/package/jasmine-async-utilities)
+
 # [jasmine-async-utilities](https://github.com/h2oboi89/jasmine-async-utilities)
 
 ## Usage
