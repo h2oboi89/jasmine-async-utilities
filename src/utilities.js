@@ -12,6 +12,9 @@ let shouldReject = (thunk, reason) => {
     .then(() => fail('should have rejected'))
     .catch((error) => {
       if(reason instanceof RegExp) {
+        if(typeof error !== 'string') {
+          error = error.message;
+        }
         expect(error.match(reason)).not.toBe(null);
       }
       else {
