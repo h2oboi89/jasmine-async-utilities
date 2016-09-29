@@ -37,7 +37,7 @@ describe('tests', () => {
       return shouldReject(() => Promise.reject(new Error('oh noes!')), 'oh noes!');
     });
 
-    it('should pass when rejected with an error matching the RegExp', asyncTest(() => {
+    it('should pass when rejected with an string matching the RegExp', asyncTest(() => {
       let getRandomInt = (min, max) => {
         min = Math.ceil(min);
         max = Math.floor(max);
@@ -45,6 +45,16 @@ describe('tests', () => {
       };
 
       return shouldReject(() => Promise.reject(`oh noes ${getRandomInt(0, 10)}`), /^oh noes \d$/);
+    }));
+
+    it('should pass when rejected with an error matching the RegExp', asyncTest(() => {
+      let getRandomInt = (min, max) => {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      };
+
+      return shouldReject(() => Promise.reject(new Error(`oh noes ${getRandomInt(0, 10)}`)), /^oh noes \d$/);
     }));
 
     it('should fail when rejected with an unexpected reason', asyncTest(() => {
